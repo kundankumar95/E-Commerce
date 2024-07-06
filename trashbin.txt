@@ -1,0 +1,132 @@
+
+    margin-top: 40px;
+ 
+    margin-top: px;
+ 
+instagram_icon
+ 
+/C:\Users\Kundan\OneDrive - uem.edu.in\Desktop\e-commerce\frontend\src\
+ 
+height: 90vh;
+ 
+<div>
+        <input type='email' placeholder='Your Email id'/>
+    </div>
+ 
+inline;gr
+ 
+.new-collections-item{
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+}
+ 
+/new_collections
+ 
+  <h1>testing</h1>
+ 
+ive
+ 
+<img src={} alt="" />
+ 
+exclusive_image
+ 
+import exclusive_image from ''
+ 
+xclusive_image
+ 
+xclusive_image
+ 
+module
+ 
+
+import Hero from '../component/Hero/Hero'
+import Popular from '../component/popular/popular';
+ 
+<Hero/>
+      <Popular/>
+ 
+import Hero from '../component/Hero/Hero'
+import Popular from '../component/popular/popular';
+ 
+<Hero/>
+      <Popular/>
+ 
+/popular.jsx
+ 
+C:\Users\Kundan\OneDrive - uem.edu.in\Desktop\e-commerce\frontend\src\
+ 
+Shop
+ 
+Shop from
+ 
+import Navbar from './Navbar';
+ 
+<h1>HII my name is kundan</h1>
+ 
+import './pages'
+ 
+src/
+ 
+component/page
+ 
+import Hero from './component/Hero/Hero'
+ 
+ <Hero/>
+ 
+module
+ 
+import React from 'react'
+
+const popular = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default popular
+ 
+<img src={cart_icon} alt="" />
+ 
+<button>Login</button>
+ 
+Men
+ 
+Shop
+ 
+Cart
+ 
+</BrowserRouter>
+ 
+    <link href="https://fonts.gooleapis.com/css2?family=popins&display="/>
+
+ 
+ <link rel="" href=""/>
+ 
+</>
+ 
+<hr/>
+ 
+import logo from '../assets/logo.png'
+ 
+className="App"
+ 
+</E-Commerce>
+ 
+<header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+ 
