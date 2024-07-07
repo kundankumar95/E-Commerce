@@ -1,3 +1,70 @@
+padding-bottom: 100px;
+ 
+insignup-
+ 
+text
+ 
+text
+ 
+text
+ 
+oginsignup-fiel
+ 
+// Log the category prop
+ 
+products
+ 
+ else {
+            return null;
+          }
+ 
+rops.category === item.category
+ 
+{/* Your component logic here */}
+ 
+ <React.StrictMode>
+ 
+</React.StrictMode>
+ 
+this.
+ 
+const ShopContext = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+ 
+  height: -200px;
+ 
+margin-bottom: -150px;
+ 
+margin-bottom: 50px;
+ 
+</Shopper>
+ 
+ import Twitter_icon from '../assets/twitter.png'
+ 
+<img src={Twitter_icon} alt=''/>
+ 
+
+                    <img src={footer_logo} alt=''/>
+ 
+
+import { FaInstagram } from 'react-icons/fa';
+ 
+<FaInstagram size={50} color="#E4405F" />
+ 
+
+            <div className="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="You email id here"/>
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+ 
 
     margin-top: 40px;
  

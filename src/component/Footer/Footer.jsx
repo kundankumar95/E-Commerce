@@ -1,41 +1,49 @@
 import React from 'react'
 import './Footer.css'
-import footer_logo from '../assets/logo_big.png'
-// import instagram_icon from '../assets/instagram_icon.png'
-// import pintester_icon from '../assets/pintester_icon.png'
-// import whatsapp_icon from '../assets/whatsapp_icon.png'
+//import footer_logo from '../assets/logo_big.png'
+import instagram_icon from '../assets/instagram_icon.png'
+import pintester_icon from '../assets/pintester_icon.png'
+import whatsapp_icon from '../assets/whatsapp_icon.png'
 
 const Footer = () => {
   return (
     <div className='footer'>
-      <div className="footer-logo">
-        <img src={footer_logo} alt="" />
-        <p>SHOPPER</p>
-        <div>
-            <ul className="footer-links">
-                <li>Company</li>
-                <li>Products</li>
-                <li>Offices</li>
-                <li>About</li>
-                <li>Contact</li>
-            </ul>
-            {/* <div className="footer-social-icon">
-                <div className="footer-icons-container">
-                    <img src={instagram_icon} alt="" />
+      <footer>
+        <div className="footer_main">
+            <div className="tag">
+                <h1>Contact</h1>
+                <a href="/"><i class="fa-solid fa-house"></i>A-1/Bangalore/India</a>
+                
+                <a href="/"><i class="fa-solid fa-phone"></i>+919501234567</a>
+                <a href="/"><i class="fa-solid fa-envelope"></i>Shopper@gmail.com</a>
+            </div>
+
+            <div className="tag">
+                <h1>Get Help</h1>
+                <a href="/" class="center">FAQ</a>
+                <a href="/" class="center">Shipping</a>
+                <a href="/" class="center">Returns</a>
+                <a href="/" class="center">Payment Options</a>
+            </div>
+
+            <div className="tag">
+                <h1>Our Stores</h1>
+                <a href="/" class="center">Bangalore</a>
+                <a href="/" class="center">Chennai</a>
+                <a href="/" class="center">Mumbai</a>
+                <a href="/" class="center">New Delhi</a>
+            </div>
+
+            <div className="tag">
+                <h1>Follw Us</h1>
+                <div class="social_link">
+                    <img src={pintester_icon} alt=''/>
+                    <img src={instagram_icon} alt=''/>
+                    <img src={whatsapp_icon} alt=''/>                  
                 </div>
-                <div className="footer-icons-container">
-                    <img src={pintester_icon} alt="" />
-                </div>
-                <div className="footer-icons-container">
-                    <img src={whatsapp_icon} alt="" />
-                </div>
-            </div> */}
-            {/* <div className="footer-copyright">
-                <hr/>
-                <p >Copyright @2024-All Right Reserved.</p>
-            </div> */}
+            </div>
         </div>
-      </div>
+    </footer>
     </div>
   )
 }
