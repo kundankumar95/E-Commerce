@@ -1,3 +1,195 @@
+ .new-collections{
+        height: 90vh;
+    }
+ 
+
+        height: 50vh;
+ 
+.new-collections{
+        height: 60vh;
+    }
+ 
+
+    .new-collections{
+        height: 70vh;
+    }
+ 
+ .offers-right{
+        padding-top: 10px;
+    }
+ 
+height: 40vh;
+ 
+
+        padding: 0px 60px;
+ 
+height: 340px;
+ 
+gap: 15px;
+ 
+.popular h1{
+        font-size: 20px;
+    }
+    .popular hr{
+        width: 100px;
+    }
+ 
+ gap: 6px;
+ 
+
+        margin-top: 20px;
+ 
+
+        height: 3px;
+ 
+@media(max-width: 1280px){
+    
+}
+ 
+
+        margin-top: 20px;
+ 
+gap: 10px;
+ 
+00
+ 
+.item-price-old{
+        font-size: 13px;
+    }
+ 
+  font-size: 13px;
+ 
+024
+ 
+ flex
+ 
+.nav-login-cart button{
+        width: 120px;
+        height: 45px;
+        font-size: 16px;
+    }
+ 
+return totalamount;
+ 
+    display: flex;
+ 
+import React, { useContext } from 'react'
+import './CartItems.css'
+import { ShopContext } from '../../context/ShopContext'
+import remove_icon from '../assets/cart_cross_icon.png'
+
+const CartItems = () => {
+    const {all_product,CartItems,removeFromCart} = useContext(ShopContext)
+  return (
+    <div className='cartitems'>
+      <div className="cartitems-format-main">
+        <p>Product</p>
+        <p>Title</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Total</p>
+        <p>Remove</p>
+      </div>
+      <hr/>
+      {all_product.map((e)=>{
+        if(CartItems[e.id]>0){
+            return <div>
+                <div className="cartitems-format">
+                    <img src={e.image} alt="" className='cartitems-product-icon'/>
+                    <p>{e.name}</p>
+                    <p>${e.new_price}</p>
+                    <button className='cartitems-quantity'>{CartItems[e.id]}</button>
+                    <p>${e.new_price*CartItems[e.id]}</p>
+                    <img src={remove_icon} onClick={()=>{removeFromCart()}} alt="" />
+                </div>
+            </div>
+        }
+      })}
+    </div>
+  )
+}
+
+export default CartItems
+
+ 
+import React, { useContext } from 'react'
+import './CartItems.css'
+import { ShopContext } from '../../context/ShopContext'
+import remove_icon from '../assets/cart_cross_icon.png'
+
+const CartItems = () => {
+    const {all_product,CartItems,removeFromCart} = useContext(ShopContext)
+  return (
+    <div className='cartitems'>
+      <div className="cartitems-format-main">
+        <p>Product</p>
+        <p>Title</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Total</p>
+        <p>Remove</p>
+      </div>
+      <hr/>
+      {all_product.map((e)=>{
+        if(CartItems[e.id]>0){
+            return <div>
+                <div className="cartitems-format">
+                    <img src={e.image} alt="" className='cartitems-product-icon'/>
+                    <p>{e.name}</p>
+                    <p>${e.new_price}</p>
+                    <button className='cartitems-quantity'>{CartItems[e.id]}</button>
+                    <p>${e.new_price*CartItems[e.id]}</p>
+                    <img src={remove_icon} onClick={()=>{removeFromCart()}} alt="" />
+                </div>
+            </div>
+        }
+      })}
+    </div>
+  )
+}
+
+export default CartItems
+
+ 
+<div>
+        <div className="cartitems-format">
+            <img src="" alt="" className='cartitems-product-icon'/>
+            <p></p>
+            <p></p>
+            <button className='cartitems-quantity'></button>
+            <p></p>
+            <img src={remove_icon} onClick={()=>{removeFromCart()}} alt="" />
+        </div>
+      </div>
+ 
+const contextValue = {all_product,cartItems};
+ 
+
+    console.log(cartItems);
+ 
+const [cartItems,setCartItems] = useState(getDefaultCart());
+ 
+    const getDefaultCart = ()=>{
+        let cart = {};
+        for (let index = 0;index < all_product.length; index++){
+            cart[index] = 0;
+        }
+        return cart;
+    }
+ 
+moduleName
+ 
+module
+ 
+  margin-top: -50px;
+ 
+<hr/>
+        <hr/>
+ 
+#D0D0D0
+ 
+#D0D0D0
+ 
 such as Amazon Prime
  
 Amazon
