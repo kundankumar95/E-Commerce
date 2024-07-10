@@ -64,10 +64,33 @@
     height: 3px;
     background: #c7c7c7;
     margin-left: 20px;
-} */
-
-
-
+}
+@media(max-width: 800){
+    .footer{
+        gap: 20px;
+    }
+    .footer-logo{
+        gap: 10px;
+        align-items: end;
+    }
+    .footer-logo img{
+        width: 40px;
+    }
+    .footer-logo p{
+        font-size: 25px;
+    }
+    .footer-Link{
+        font-size: 14px;
+        gap: 10px;
+    }
+    .footer-social-icon img{
+        width: 22px;
+    }
+    .footer-copyright{
+        font-size: 13px;
+    }
+}
+*/
 footer{
     width: 100%;
 }
@@ -150,18 +173,17 @@ footer .footer_main .tag .social_link a::after{
     z-index: -10;
     transition: 0.5s;
 }
-
-footer .footer_main .tag .social_link a:hover::after{
+.footer .footer_main .tag .social_link a:hover::after{
     left: 0;
 }
 
-footer .footer_main .tag .search_bar{
+/* footer .footer_main .tag .search_bar{
     width: 230px;
     height: 30px;
     background: rgb(202, 202, 202);
     border-radius: 25px;
-}
-
+} */
+/* 
 footer .footer_main .tag .search_bar input{
     width: 200px;
     padding: 2px 0;
@@ -172,9 +194,8 @@ footer .footer_main .tag .search_bar input{
     background: none;
     outline: none;
     font-size: 13px;
-}
-
-footer .footer_main .tag .search_bar button{
+} */
+/* footer .footer_main .tag .search_bar button{
     padding: 7px 15px;
     background: linear-gradient(to right, #c72092 , #6c14d0);
     border: none;
@@ -182,4 +203,47 @@ footer .footer_main .tag .search_bar button{
     border-radius: 25px;
     color: white;
     cursor: pointer;
+} */
+@media(max-width: 800px){
+    .tag-contact{
+        font-size: 10px;
+        padding-left: 30px;
+    }
+    .tag-get-touch{
+        font-size: 10px;
+    }
+    .tag-our-store{
+        font-size: 10px;
+    }
+    .tag-follow-us{
+        display: none;
+    }
+    .social_link{
+        display: none;
+    }
+    .footer_main{
+        font-size: small;
+    }
+}
+@media(max-width: 500px){
+    .tag-contact{
+        font-size: 10px;
+        padding-left: 30px;
+        padding-bottom: 40px;
+    }
+    .tag-get-touch{
+        font-size: 8px;
+    }
+    .tag-our-store{
+        font-size: 8px;
+    }
+    .tag-follow-us{
+        display: none;
+    }
+    .social_link{
+        display: none;
+    }
+    .footer_main{
+        font-size: small;
+    }
 }

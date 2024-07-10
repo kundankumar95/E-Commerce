@@ -1,3 +1,87 @@
+
+        margin: 30px 50px;
+ 
+
+    .loginsignup-container{
+        width: auto;
+        max-width: 500px;
+        max-height: 500px;
+    }
+    .loginsignup-container h1{
+        margin: 10px 0px;
+    }
+    .loginsignup-fields{
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .loginsignup-fields input{
+        height: 65px;
+        width: 93%;
+    }
+    .loginsignup-container button{
+        width: 100%;
+    }
+    .loginsignup-login{
+        font-size: 16px;
+    }
+    .loginsignup-agree{
+        font-size: 14px;
+        gap: 10px;
+    }
+ 
+
+    .loginsignup{
+        padding-top: 50px;
+    }
+ 
+padding-bottom: 40px;
+ 
+font-size: 10px;
+ 
+font-size: 10px;
+ 
+footer .footer_main .tag .search_bar button{
+    padding: 7px 15px;
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    border: none;
+    margin-top: 15px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+ 
+ .footer .footer_main .tag h1{
+        font-size: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+ 
+.footer{
+
+}
+ 
+@media(max-width: )
+ 
+.newsletter div button{
+        width: 100px;
+        height: 40px;
+        font-size: 13px;
+    }
+ 
+
+        font-size: 13px;
+ 
+
+        height: 40px;
+ 
+
+        margin-bottom: 30px;
+ 
+
+        padding: 0px 80px;
+ 
+  gap: 20px;
+ 
  .new-collections{
         height: 90vh;
     }
