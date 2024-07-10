@@ -21,3 +21,60 @@
     display: flex;
     gap: 30px;
 }
+@media(max-width: 1280px){
+    .relatedproduct{
+        height: 70vh;
+    }
+    .relatedproduct h1{
+        font-size: 40px;
+    }
+    .relatedproduct hr{
+        width: 160px;
+        height: 4px;
+    }
+    .relatedproduct-item{
+        gap: 20px;
+        margin-top: 30px;
+    }
+}
+@media(max-width: 1024px){
+    .relatedproduct{
+        height: 60vh;
+    }
+    .relatedproduct h1{
+        font-size: 30px;
+    }
+    .relatedproduct hr{
+        width: 120px;
+        height: 3px;
+    }
+    .relatedproduct-item{
+        gap: 15px;
+        margin-top: 20px;
+    }
+}
+@media(max-width: 800px){
+    .relatedproduct{
+        height: 50vh;
+        gap: 6px;
+    }
+    .relatedproduct h1{
+        font-size: 20px;
+    }
+    .relatedproduct hr{
+        width: 100px;
+    }
+    .relatedproduct-item{
+        gap: 15px;
+    }
+}
+@media(max-width: 500px){
+    .relatedproduct{
+        height: 90vh;
+    }
+    .relatedproduct-item{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
