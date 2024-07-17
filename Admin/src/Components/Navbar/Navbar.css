@@ -1,0 +1,25 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    /* justify-content: s; */
+    padding: 1px 15px;
+    box-shadow: 1px;
+    background: white;
+}
+.nav-logo{
+    width: 50px;
+}
+.nav-profife{
+    width: 75px;
+}
+@media(max-width:800px){
+    .navbar{
+        padding: 7px 7.5px;
+    }
+    .nav-logo{
+        width: 40px;
+    }
+    .nav-profife{
+        width: 60px;
+    }
+}
