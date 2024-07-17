@@ -5,13 +5,12 @@ import navlogo from '../../assets/logo.png'
 const Navbar = () => {
   return (
     <>
-    <div className='navbar'>
-      <img src={navlogo} alt="" className="nav-logo"/>
-      {/* <img src={navProfile} alt="" /> */} 
-      <h1>SHOPPER</h1>
-      
-    </div>
-    <hr/>
+      <div className='navbar'>
+        <img src={navlogo} alt="Shopper Logo" className="nav-logo"/>
+        {/* <img src={navProfile} alt="Admin Profile" /> */}
+        <h1>SHOPPER</h1>
+      </div>
+      <hr/>
     </>
   )
 }

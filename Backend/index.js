@@ -243,6 +243,7 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 
 app.post('/addproduct', async (req, res) => {
+  console.log("Product Added");
   let products = await Product.find({});
   let id;
   if(products.length>0){
