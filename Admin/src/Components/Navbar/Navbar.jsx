@@ -9,8 +9,10 @@ const Navbar = () => {
         <img src={navlogo} alt="Shopper Logo" className="nav-logo"/>
         {/* <img src={navProfile} alt="Admin Profile" /> */}
         <h1>SHOPPER</h1>
+        
       </div>
       <hr/>
+
     </>
   )
 }
