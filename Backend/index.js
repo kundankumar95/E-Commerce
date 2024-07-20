@@ -174,6 +174,7 @@ const cors = require("cors");
 const { type } = require("os");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { log } = require("console");
 
 app.use(express.json());
 app.use(cors());
@@ -410,6 +411,60 @@ app.post('/login',async (req,res)=>{
 //   res.json({success:true,token})
 
 // })
+
+
+//creating endpoint for newcollections data
+app.get('/newcollection',async (req,res)=>{
+  let products = await Product.find({});
+  let newcollection = products.slice(1).slice(-8);
+  console.log("NewCollection Fetched");
+  res.send(newcollection);
+})
+
+// creating endpoint for popular in woment section
+app.get('/popularinwomen',async(req,res)=>{
+  let products = await Product.find({category:"women"})
+  let popular_in_women = products.slice(0,4);
+  console.log("Popular in women fetched");
+  res.send(popular_in_women);
+})
+
+//creating middleware to fetch user
+const fetchUser = (req, res, next) => {
+  const token = req.header('auth-token');
+  if (!token) {
+    return res.status(401).send({ errors: "Please authenticate using a valid token" });
+  }
+  try {
+    const data = jwt.verify(token, 'secret_ecom');
+    req.user = data.user;
+    next();
+  } catch (error) {
+    res.status(401).send({ errors: "Please authenticate using a valid token" });
+  }
+};
+
+
+app.post('/addtocart', fetchUser, async (req, res) => {
+    console.log("Added",req.body.itemId);
+
+  let userData = await Users.findOne({_id:req.user.id});
+  userData.cartData[req.body.itemId] += 1;
+  await Users.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData[req.body.itemId]});
+  res.send("Added");
+});
+
+// creating endpoint to remove from cart data
+app.post('/removefromcart',fetchUser,async(req,res)=>{
+  console.log("removed",req.body.itemId);
+  let userData = await Users.findOne({_id:req.user.id});
+  if(userData.cartData[req.body.itemId] > 0){
+    userData.cartData[req.body.itemId] -= 1;
+  }
+  
+  await Users.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData[req.body.itemId]});
+  res.send("Removed");
+})
 
 app.listen(port, (error) => {
   if (!error) {
