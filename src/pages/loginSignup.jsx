@@ -1,104 +1,8 @@
-import React, { useState } from 'react';
-import './CSS/loginsignup.css';
+import React from 'react'
+import './CSS/loginsignup.css'
 
-const LoginSignup = () => {
-  const [state, setState] = useState("Login");
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    email: "",
-    agree: false
-  });
 
-  const changeHandler = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    if (state === "Login") {
-      login();
-    } else {
-      signup();
-    }
-  };
-
-  const login = async () => {
-    console.log("Login Function", formData);
-
-    try {
-      const response = await fetch('http://localhost:4000/login', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const responseData = await response.json();
-      console.log("Response Data:", responseData);
-
-      if (responseData.success) {
-        localStorage.setItem('auth-token', responseData.token);
-        window.location.replace("/");
-      } else {
-        console.log("Login failed: ", responseData.errors);
-        alert(responseData.errors || 'Login failed');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      alert('An error occurred. Please check the console for details.');
-    }
-  };
-
-  const signup = async () => {
-    console.log("Signup Function", formData);
-
-    try {
-      // Check if all fields are filled out and the user has agreed to the terms
-      if (!formData.username || !formData.password || !formData.email || !formData.agree) {
-        alert('Please fill out all fields and agree to the terms');
-        return;
-      }
-
-      const response = await fetch('http://localhost:4000/signup', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const responseData = await response.json();
-        throw new Error(responseData.error || `HTTP error! Status: ${response.status}`);
-      }
-
-      const responseData = await response.json();
-      console.log("Response Data:", responseData);
-
-      if (responseData.success) {
-        localStorage.setItem('auth-token', responseData.token);
-        window.location.replace("/");
-      } else {
-        alert(responseData.errors || 'Signup failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    }
-  };
-
+const loginSignup = () => {
   return (
     <div className='loginsignup'>
       <div className="loginsignup-container">
@@ -161,5 +65,4 @@ const LoginSignup = () => {
   );
 };
 
-export default LoginSignup;
-
+export default loginSignup
