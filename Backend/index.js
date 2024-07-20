@@ -159,6 +159,11 @@ app.listen(port, (error) => {
   }
 });
 */
+
+
+
+
+
 const port = 4000;
 const express = require("express");
 const app = express();
@@ -166,6 +171,7 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const { type } = require("os");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -290,42 +296,7 @@ const userSchema = new mongoose.Schema({
 
 const Users = mongoose.model('Users', userSchema);
 
-// User Signup Endpoint
-// app.post('/signup', async (req, res) => {
-//   try {
-//     const { username, email, password } = req.body;
-
-//     // Check if the user already exists
-//     let user = await Users.findOne({ email });
-//     if (user) {
-//       return res.status(400).json({ success: false, errors: "Existing user found with the same email address." });
-//     }
-
-//     // Hash the password
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPassword = await bcrypt.hash(password, salt);
-
-//     // Create a new user
-//     user = new Users({
-//       name: username,
-//       email,
-//       password: hashedPassword,
-//     });
-
-//     await user.save();
-
-//     const data = { user: { id: user.id } };
-
-//     // Generate JWT token
-//     const token = jwt.sign(data, 'secret_ecom', { expiresIn: '1h' });
-//     res.json({ success: true, token });
-
-//   } catch (error) {
-//     console.error('Signup Error:', error.message);
-//     res.status(500).send('Server error');
-//   }
-// });
-
+// Creating endpoint for registering the user
 app.post('/signup', async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -343,16 +314,15 @@ app.post('/signup', async (req, res) => {
       return res.status(400).json({ success: false, message: 'User already exists' });
     }
 
-    // Generate salt and hash password
+    // Hash the password
     const salt = await bcrypt.genSalt(10);
-    console.log('Generated Salt:', salt); // Log the generated salt
     const hashedPassword = await bcrypt.hash(password, salt);
-    console.log('Hashed Password:', hashedPassword); // Log the hashed password
 
+    // Create a new user
     user = new Users({
       name: username,
       email,
-      password: hashedPassword,
+      password
     });
 
     await user.save();
@@ -367,36 +337,79 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-
-// User Login Endpoint
-// User Login Endpoint
-app.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    // Fetch user from the database using email
-    let user = await Users.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ success: false, message: "Invalid Email or Password" });
+//creating endpoint for user login
+app.post('/login',async (req,res)=>{
+  let user = await Users.findOne({email:req.body.email});
+  if(user){
+    const passCompare = req.body.password === user.password;
+    if(passCompare){
+      const data = {
+        user:{
+          id:user.id
+        }
+      }
+      const token = jwt.sign(data,'secret_ecom');
+      res.json({success:true,token});
     }
-
-    // Compare provided password with hashed password in the database
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ success: false, message: "Invalid Email or Password" });
+    else{
+      res.json({success:false,error:"Wrong Password"});
     }
-
-    // Generate JWT token
-    const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, 'secret_ecom', { expiresIn: '1h' });
-
-    res.json({ success: true, token });
-  } catch (error) {
-    console.error('Login Error:', error.message);
-    res.status(500).send('Server error');
   }
-});
+  else{
+    res.json({success:false,errors:"Wrong Email Id"});
+  }
+})
 
+// //Schema creating for user model
+// const Users = mongoose.model('Users',{
+//   name:{
+//     type:String,
+//   },
+//   email:{
+//     type:String,
+//     unique:true,
+//   },
+//   password:{
+//     type:String,
+//   },
+//   cartData:{
+//     type:Object,
+//   },
+//   date:{
+//     type:Date,
+//     default:Date.now,
+//   }
+// })
+
+// //Creating Endpoint for registering the user
+// app.post('/signup',async(req,res)=>{
+//   let check = await Users.findOne({email:req.body.email});
+//   if(check){
+//     return res.status(400).json({success:false,errors:"existing user found with same email address."})
+//   }
+//   let cart = {};
+//   for(let i=0;i<300;i++){
+//     cart[i] = 0;
+//   }
+//   const user = new Users({
+//     name:req.body.username,
+//     email:req.body.email,
+//     password:req.body.password,
+//     cartData:cart,
+//   })
+
+//   await user.save();
+
+//   const data = {
+//     user:{
+//       id:user.id
+//     }
+//   }
+
+//   const token = jwt.sign(data,'secret_ecom');
+//   res.json({success:true,token})
+
+// })
 
 app.listen(port, (error) => {
   if (!error) {
