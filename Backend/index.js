@@ -159,6 +159,11 @@ app.listen(port, (error) => {
   }
 });
 */
+
+
+
+
+
 const port = 4000;
 const express = require("express");
 const app = express();
@@ -166,8 +171,6 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { type } = require("os");
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 app.use(express.json());
@@ -336,7 +339,6 @@ const userSchema = new mongoose.Schema({
 
 const Users = mongoose.model('Users', userSchema);
 
-// Creating endpoint for registering the user
 app.post('/signup', async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -347,15 +349,11 @@ app.post('/signup', async (req, res) => {
       return res.status(400).json({ success: false, errors: "Existing user found with the same email address." });
     }
 
-    // Hash the password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    // Create a new user
+    // Create a new user without hashing the password
     user = new Users({
       name: username,
       email,
-      password: hashedPassword,
+      password
     });
 
     await user.save();
@@ -376,78 +374,27 @@ app.post('/signup', async (req, res) => {
 });
 
 //creating endpoint for user login
-app.post('/login',async (req,res)=>{
-  let user = await Users.findOne({email:req.body.email});
-  if(user){
+app.post('/login', async (req, res) => {
+  let user = await Users.findOne({ email: req.body.email });
+  if (user) {
     const passCompare = req.body.password === user.password;
-    if(passCompare){
+    if (passCompare) {
       const data = {
-        user:{
-          id:user.id
+        user: {
+          id: user.id
         }
       }
-      const token = jwt.sign(data,'secret_ecom');
-      res.json({success:true,token});
+      const token = jwt.sign(data, 'secret_ecom');
+      res.json({ success: true, token });
     }
-    else{
-      res.json({success:false,error:"Wrong Password"});
+    else {
+      res.json({ success: false, error: "Wrong Password" });
     }
   }
-  else{
-    res.json({success:false,errors:"Wrong Email Id"});
+  else {
+    res.json({ success: false, errors: "Wrong Email Id" });
   }
 })
-
-// //Schema creating for user model
-// const Users = mongoose.model('Users',{
-//   name:{
-//     type:String,
-//   },
-//   email:{
-//     type:String,
-//     unique:true,
-//   },
-//   password:{
-//     type:String,
-//   },
-//   cartData:{
-//     type:Object,
-//   },
-//   date:{
-//     type:Date,
-//     default:Date.now,
-//   }
-// })
-
-// //Creating Endpoint for registering the user
-// app.post('/signup',async(req,res)=>{
-//   let check = await Users.findOne({email:req.body.email});
-//   if(check){
-//     return res.status(400).json({success:false,errors:"existing user found with same email address."})
-//   }
-//   let cart = {};
-//   for(let i=0;i<300;i++){
-//     cart[i] = 0;
-//   }
-//   const user = new Users({
-//     name:req.body.username,
-//     email:req.body.email,
-//     password:req.body.password,
-//     cartData:cart,
-//   })
-
-//   await user.save();
-
-//   const data = {
-//     user:{
-//       id:user.id
-//     }
-//   }
-
-//   const token = jwt.sign(data,'secret_ecom');
-//   res.json({success:true,token})
-
-// })
 
 app.listen(port, (error) => {
   if (!error) {
@@ -456,5 +403,3 @@ app.listen(port, (error) => {
     console.error("Error: " + error);
   }
 });
-
-
