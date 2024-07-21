@@ -15,7 +15,7 @@ const Footer = () => {
                 <a href="/"><i className="fa-solid fa-house"></i>A-1/Bangalore/India</a>
                 
                 <a href="/"><i className="fa-solid fa-phone"></i>+919501234567</a>
-                <a href="/"><i className="fa-solid fa-envelope"></i>Shopper@gmail.com</a>
+                <a href="/"><i className="fa-solid fa-envelope"></i>Zentra@gmail.com</a>
             </div>
 
             <div className="tag">
