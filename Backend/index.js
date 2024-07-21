@@ -445,26 +445,61 @@ const fetchUser = (req, res, next) => {
 };
 
 
-app.post('/addtocart', fetchUser, async (req, res) => {
-    console.log("Added",req.body.itemId);
+// app.post('/addtocart', fetchUser, async (req, res) => {
+//     console.log("Added",req.body.itemId);
 
-  let userData = await Users.findOne({_id:req.user.id});
-  userData.cartData[req.body.itemId] += 1;
-  await Users.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData[req.body.itemId]});
-  res.send("Added");
+//   let userData = await Users.findOne({_id:req.user.id});
+//   userData.cartData[req.body.itemId] += 1;
+//   await Users.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData[req.body.itemId]});
+//   res.json({ message: "Added" });
+// });
+
+app.post('/addtocart', fetchUser, async (req, res) => {
+  try {
+    console.log("Added", req.body.itemId);
+
+    let userData = await Users.findOne({ _id: req.user.id });
+    userData.cartData[req.body.itemId] = (userData.cartData[req.body.itemId] || 0) + 1;
+    await Users.findByIdAndUpdate(
+      { _id: req.user.id },
+      { cartData: userData.cartData }
+    );
+
+    res.json({ message: "Added" });
+  } catch (error) {
+    console.error('Add to Cart Error:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // creating endpoint to remove from cart data
-app.post('/removefromcart',fetchUser,async(req,res)=>{
-  console.log("removed",req.body.itemId);
-  let userData = await Users.findOne({_id:req.user.id});
-  if(userData.cartData[req.body.itemId] > 0){
-    userData.cartData[req.body.itemId] -= 1;
+app.post('/removefromcart', fetchUser, async (req, res) => {
+  try {
+    console.log("removed", req.body.itemId);
+
+    let userData = await Users.findOne({ _id: req.user.id });
+    
+    if (userData.cartData[req.body.itemId] > 0) {
+      userData.cartData[req.body.itemId] -= 1;
+    }
+    
+    await Users.findByIdAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
+    
+    res.json({ message: "Removed" }); // Send a JSON response
+  } catch (error) {
+    console.error('Remove from Cart Error:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-  
-  await Users.findByIdAndUpdate({_id:req.user.id},{cartData:userData.cartData[req.body.itemId]});
-  res.send("Removed");
+});
+
+
+//creating end point to get cartdata
+app.post('/getcart',fetchUser,async(req,res)=>{
+  console.log("GetCart");
+  let userData = await Users.findOne({ _id: req.user.id });
+  res.json(userData.cartData);
 })
+
 
 app.listen(port, (error) => {
   if (!error) {
